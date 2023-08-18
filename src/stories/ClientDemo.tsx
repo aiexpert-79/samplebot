@@ -63,7 +63,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
 
   return (
     <Card>
-      <Card.Header>
+      {/* <Card.Header>
         <div className="d-flex flex-wrap align-items-center gap-4">
           <div>Client Chat Completion Stream Demo</div>
           <div style={{ fontSize: '80%' }}>
@@ -72,7 +72,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
             </a>
           </div>
         </div>
-      </Card.Header>
+      </Card.Header> */}
       <Card.Body>
         <Form
           className="d-flex flex-column gap-2"
@@ -100,7 +100,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
                   </Button>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div className="small fw-bold">Model:</div>
                 <Form.Control
                   type="text"
@@ -109,7 +109,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
                   onChange={(e) => setModel(e.target.value)}
                   required
                 />
-              </div>
+              </div> */}
             </Card.Body>
           </Card>
           <Alert variant="info" className="d-flex flex-column gap-1 mb-0">
@@ -123,7 +123,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
             />
           </Alert>
           <Alert variant="primary" className="d-flex flex-column gap-1 mb-0">
-            <div className="small fw-bold">👤 User Prompt:</div>
+            <div className="small fw-bold">👩‍🦰 User Prompt:</div>
             <Form.Control
               type="text"
               placeholder="Enter user prompt"
@@ -163,10 +163,6 @@ export const ClientDemo = (props: ClientDemoProps) => {
               <div className="fw-bold">{`${error}`}</div>
             </Alert>
           )}
-          {/* <h5 className="text-muted text-center mb-2 mt-3">
-            If this project helped you, please{' '}
-            <a href="https://github.com/aiexpert-79/openai-stream-response/">Star it on GitHub</a> so others can find it. :)
-          </h5> */}
         </Form>
       </Card.Body>
     </Card>

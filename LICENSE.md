@@ -1,6 +1,6 @@
 MIT License
 
-Copyright © 2023 Justin Mahar https://github.com/aiexpert-79
+Copyright © 2023 Honey Moharry https://github.com/aiexpert-79
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
