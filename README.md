@@ -7,19 +7,10 @@
 <p align="center">
   <a href="https://badge.fury.io/js/openai-ext" target="_blank" rel="noopener noreferrer"><img src="https://badge.fury.io/js/openai-ext.svg" alt="npm Version" /></a>&nbsp;
   <a href="https://github.com/aiexpert-79/openai-ext/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-Source-success" alt="View project on GitHub" /></a>&nbsp;
-  <a href="https://github.com/aiexpert-79/openai-ext/actions?query=workflow%3ADeploy" target="_blank" rel="noopener noreferrer"><img src="https://github.com/aiexpert-79/openai-ext/workflows/Deploy/badge.svg" alt="Deploy Status" /></a>&nbsp;
   <a href="https://github.com/sponsors/aiexpert-79" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor"/></a>
 </p>
 
-<h3><a href="https://aiexpert-79.github.io/openai-ext/?path=/story/demo--client">👁️ Live Demo</a></h3>
-
-[![Live Demo](https://raw.githubusercontent.com/aiexpert-79/openai-ext/master/public/demo.gif)](https://aiexpert-79.github.io/openai-ext/?path=/story/demo--client)
-
-## Documentation
-
-Read the **[official documentation](https://aiexpert-79.github.io/openai-ext/)**.
-
-<a href="https://aiexpert-79.github.io/openai-ext/?path=/story/demo--client">View the live demo.</a>
+[![Live Demo](https://raw.github.com/aiexpert-79/samplebot/main/public/demo.gif)](https://yakko-bot-a527a.web.app)
 
 ## Overview
 
@@ -41,20 +32,6 @@ This project extends OpenAI's API to support streaming chat completions on both 
   - Stop completions before they finish, just like ChatGPT allows.
 
 [lock:donate]::🚫---------------------------------------
-
-## Donate 
-
-If this project helped you, please consider buying me a coffee. Your support is much appreciated!
-
-<a href="https://paypal.me/theaiexpert-79/5">
-  <img src="https://aiexpert-79.github.io/openai-ext/support/coffee-1.png" alt="Buy me a coffee" height="35" />
-</a> <a href="https://paypal.me/theaiexpert-79/15">
-  <img src="https://aiexpert-79.github.io/openai-ext/support/coffee-3.png" alt="Buy me 3 coffees" height="35" />
-</a> <a href="https://paypal.me/theaiexpert-79/25">
-  <img src="https://aiexpert-79.github.io/openai-ext/support/coffee-5.png" alt="Buy me 5 coffees" height="35" />
-</a>
-
-[/lock:donate]::---------------------------------------🚫
 
 ## Table of Contents 
 
