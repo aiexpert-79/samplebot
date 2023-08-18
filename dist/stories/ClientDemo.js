@@ -61,7 +61,7 @@ const ClientDemo = (props) => {
             react_1.default.createElement("div", { className: "d-flex flex-wrap align-items-center gap-4" },
                 react_1.default.createElement("div", null, "Client Chat Completion Stream Demo"),
                 react_1.default.createElement("div", { style: { fontSize: '80%' } },
-                    react_1.default.createElement("a", { href: "https://github.com/justinmahar/openai-ext/blob/master/src/stories/ClientDemo.tsx" }, "View Demo Source")))),
+                    react_1.default.createElement("a", { href: "https://github.com/aiexpert-79/openai-stream-response/blob/master/src/stories/ClientDemo.tsx" }, "View Demo Source")))),
         react_1.default.createElement(react_bootstrap_1.Card.Body, null,
             react_1.default.createElement(react_bootstrap_1.Form, { className: "d-flex flex-column gap-2", onSubmit: (e) => {
                     e.preventDefault();
@@ -105,7 +105,7 @@ const ClientDemo = (props) => {
                 react_1.default.createElement("h5", { className: "text-muted text-center mb-2 mt-3" },
                     "If this project helped you, please",
                     ' ',
-                    react_1.default.createElement("a", { href: "https://github.com/justinmahar/openai-ext/" }, "Star it on GitHub"),
+                    react_1.default.createElement("a", { href: "https://github.com/aiexpert-79/openai-stream-response/" }, "Star it on GitHub"),
                     " so others can find it. :)")))));
 };
 exports.ClientDemo = ClientDemo;

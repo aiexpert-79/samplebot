@@ -67,7 +67,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
         <div className="d-flex flex-wrap align-items-center gap-4">
           <div>Client Chat Completion Stream Demo</div>
           <div style={{ fontSize: '80%' }}>
-            <a href="https://github.com/justinmahar/openai-ext/blob/master/src/stories/ClientDemo.tsx">
+            <a href="https://github.com/aiexpert-79/openai-stream-response/blob/master/src/stories/ClientDemo.tsx">
               View Demo Source
             </a>
           </div>
@@ -165,7 +165,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
           )}
           {/* <h5 className="text-muted text-center mb-2 mt-3">
             If this project helped you, please{' '}
-            <a href="https://github.com/justinmahar/openai-ext/">Star it on GitHub</a> so others can find it. :)
+            <a href="https://github.com/aiexpert-79/openai-stream-response/">Star it on GitHub</a> so others can find it. :)
           </h5> */}
         </Form>
       </Card.Body>

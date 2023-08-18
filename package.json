@@ -2,9 +2,9 @@
   "name": "openai-ext",
   "version": "1.2.7",
   "coreVersion": "2.4.11",
-  "author": "Justin Mahar <contact@justinmahar.com>",
+  "author": "Justin Mahar <contact@aiexpert-79.com>",
   "description": "Extension to OpenAI's API to support streaming chat completions on the client.",
-  "homepage": "https://justinmahar.github.io/openai-ext/",
+  "homepage": "https://aiexpert-79.github.io/openai-ext/",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -16,16 +16,16 @@
     "preship": "npm run build && git add dist && git diff-index --quiet HEAD || git commit -m \"Build, version, and publish.\" && npm version patch -m \"Build, version, and publish.\"",
     "ship": "npm publish --access public",
     "postship": "git push",
-    "update": "rm -rf .lockblocks && git clone -q git@github.com:justinmahar/openai-ext.git ./.lockblocks && lockblocks ./.lockblocks . --verbose && rm -rf .lockblocks && echo '' && echo ' → Be sure to run `npm i` to install new dependencies.' && echo ''",
+    "update": "rm -rf .lockblocks && git clone -q git@github.com:aiexpert-79/openai-stream-response.git ./.lockblocks && lockblocks ./.lockblocks . --verbose && rm -rf .lockblocks && echo '' && echo ' → Be sure to run `npm i` to install new dependencies.' && echo ''",
     "postupdate": "node remove-peer-deps.js"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justinmahar/openai-ext.git"
+    "url": "git+https://github.com/aiexpert-79/openai-stream-response.git"
   },
   "bugs": {
-    "url": "https://github.com/justinmahar/openai-ext/issues"
+    "url": "https://github.com/aiexpert-79/openai-stream-response/issues"
   },
   "keywords": [],
   "devDependencies": {
