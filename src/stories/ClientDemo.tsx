@@ -56,12 +56,13 @@ export const ClientDemo = (props: ClientDemoProps) => {
             },
           },
         },
-      );
-      setXhr(xhr);
-    }
-  }, [apiKey, model, running, shouldRun, systemPrompt, userPrompt]);
+        );
+        console.log(xhr);
+        setXhr(xhr);
+      }
+    }, [apiKey, model, running, shouldRun, systemPrompt, userPrompt]);
 
-  return (
+    return (
     <Card>
       {/* <Card.Header>
         <div className="d-flex flex-wrap align-items-center gap-4">
@@ -112,8 +113,8 @@ export const ClientDemo = (props: ClientDemoProps) => {
               </div> */}
             </Card.Body>
           </Card>
-          <Alert variant="info" className="d-flex flex-column gap-1 mb-0">
-            <div className="small fw-bold">🤖 System Prompt:</div>
+          <Alert variant="secondary" className="d-flex flex-column gap-1 mb-0">
+            <div className="small fw-bold">🤖 System Prompt: <i className='text-decoration-underline'>You can customize this for your purpose.</i></div>
             <Form.Control
               type="text"
               placeholder="Enter system prompt"
@@ -123,7 +124,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
             />
           </Alert>
           <Alert variant="primary" className="d-flex flex-column gap-1 mb-0">
-            <div className="small fw-bold">👩‍🦰 User Prompt:</div>
+            <div className="small fw-bold">👩‍🦰 User Prompt: <i className='text-decoration-underline'>Ask anything you want and click send.</i></div>
             <Form.Control
               type="text"
               placeholder="Enter user prompt"
@@ -139,7 +140,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
                 Send
               </div>
             </Button>
-            <Button type="submit" variant="secondary" disabled={!running} onClick={() => xhr?.abort()}>
+            <Button type="submit" variant="danger" disabled={!running} onClick={() => xhr?.abort()}>
               Stop
             </Button>
           </div>

@@ -28,7 +28,7 @@ export class OpenAIExt {
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('Authorization', 'Bearer ' + apiKey);
-
+    
     xhr.onprogress = function (_event) {
       if (streamConfig.handler?.onContent) {
         const dataString = xhr.responseText;
@@ -79,9 +79,8 @@ export class OpenAIExt {
       ...createChatCompletionRequest,
       stream: true,
     });
-
+    console.log(data);
     xhr.send(data);
-
     return xhr;
   }
 
@@ -146,7 +145,6 @@ export class OpenAIExt {
           streamConfig.handler.onError(e, undefined);
         }
       });
-
     return responsePromise;
   }
 
@@ -182,23 +180,22 @@ export class OpenAIExt {
       .trim()
       .split(dataPrefix)
       .filter((v) => !!v); // Remove empty lines
-
-    const contentSnippets = dataJsonLines.map((dataJson) => {
-      try {
-        const parsed = JSON.parse(dataJson);
-        const choices = parsed && parsed.choices;
-        if (choices && Array.isArray(choices) && choices.length > 0) {
-          return choices[0].delta?.content ?? '';
-        } else {
-          throw new Error(dataJson);
+      const contentSnippets = dataJsonLines.map((dataJson) => {
+        try {
+          const parsed = JSON.parse(dataJson);
+          const choices = parsed && parsed.choices;
+          if (choices && Array.isArray(choices) && choices.length > 0) {
+            return choices[0].delta?.content ?? '';
+          } else {
+            throw new Error(dataJson);
+          }
+        } catch (e) {
+          throw e;
         }
-      } catch (e) {
-        throw e;
-      }
-    });
-
-    const content = contentSnippets.join('');
-
+      });
+      
+      const content = contentSnippets.join('');
+      
     return {
       content,
       isFinal,
