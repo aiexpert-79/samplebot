@@ -12,8 +12,8 @@ const OpenAIExt_1 = require("../OpenAIExt");
 const ClientDemo = (props) => {
     const [model, setModel] = react_1.default.useState('gpt-3.5-turbo');
     const [apiKey, setApiKey] = react_1.default.useState('');
-    const [systemPrompt, setSystemPrompt] = react_1.default.useState('You are a helpful AI assistant.');
-    const [userPrompt, setUserPrompt] = react_1.default.useState('Tell me a funny joke.');
+    const [systemPrompt, setSystemPrompt] = react_1.default.useState('You are a helpful medical assistant. Please answer only medical questions.');
+    const [userPrompt, setUserPrompt] = react_1.default.useState('Who are you?');
     const [error, setError] = react_1.default.useState(undefined);
     const [status, setStatus] = react_1.default.useState(undefined);
     const [completion, setCompletion] = react_1.default.useState('');
@@ -57,11 +57,6 @@ const ClientDemo = (props) => {
         }
     }, [apiKey, model, running, shouldRun, systemPrompt, userPrompt]);
     return (react_1.default.createElement(react_bootstrap_1.Card, null,
-        react_1.default.createElement(react_bootstrap_1.Card.Header, null,
-            react_1.default.createElement("div", { className: "d-flex flex-wrap align-items-center gap-4" },
-                react_1.default.createElement("div", null, "Client Chat Completion Stream Demo"),
-                react_1.default.createElement("div", { style: { fontSize: '80%' } },
-                    react_1.default.createElement("a", { href: "https://github.com/aiexpert-79/openai-stream-response/blob/master/src/stories/ClientDemo.tsx" }, "View Demo Source")))),
         react_1.default.createElement(react_bootstrap_1.Card.Body, null,
             react_1.default.createElement(react_bootstrap_1.Form, { className: "d-flex flex-column gap-2", onSubmit: (e) => {
                     e.preventDefault();
@@ -75,15 +70,12 @@ const ClientDemo = (props) => {
                             react_1.default.createElement("div", { className: "small fw-bold" }, "API Key:"),
                             react_1.default.createElement("div", { className: "d-flex gap-1" },
                                 react_1.default.createElement(react_bootstrap_1.Form.Control, { type: showKey ? 'text' : 'password', placeholder: "Enter API key", value: apiKey, onChange: (e) => setApiKey(e.target.value), required: true }),
-                                react_1.default.createElement(react_bootstrap_1.Button, { variant: "outline-primary", onClick: () => setShowKey(!showKey) }, showKey ? 'Hide' : 'Show'))),
-                        react_1.default.createElement("div", null,
-                            react_1.default.createElement("div", { className: "small fw-bold" }, "Model:"),
-                            react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: "Enter model", value: model, onChange: (e) => setModel(e.target.value), required: true })))),
+                                react_1.default.createElement(react_bootstrap_1.Button, { variant: "outline-primary", onClick: () => setShowKey(!showKey) }, showKey ? 'Hide' : 'Show'))))),
                 react_1.default.createElement(react_bootstrap_1.Alert, { variant: "info", className: "d-flex flex-column gap-1 mb-0" },
                     react_1.default.createElement("div", { className: "small fw-bold" }, "\uD83E\uDD16 System Prompt:"),
                     react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: "Enter system prompt", value: systemPrompt, onChange: (e) => setSystemPrompt(e.target.value), required: true })),
                 react_1.default.createElement(react_bootstrap_1.Alert, { variant: "primary", className: "d-flex flex-column gap-1 mb-0" },
-                    react_1.default.createElement("div", { className: "small fw-bold" }, "\uD83D\uDC64 User Prompt:"),
+                    react_1.default.createElement("div", { className: "small fw-bold" }, "\uD83D\uDC69\u200D\uD83E\uDDB0 User Prompt:"),
                     react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: "Enter user prompt", value: userPrompt, onChange: (e) => setUserPrompt(e.target.value), required: true })),
                 react_1.default.createElement("div", { className: "d-flex gap-1" },
                     react_1.default.createElement(react_bootstrap_1.Button, { type: "submit", variant: "primary", disabled: running },
@@ -101,11 +93,6 @@ const ClientDemo = (props) => {
                             status,
                             " ",
                             (0, http_status_codes_1.getReasonPhrase)(status)))),
-                    react_1.default.createElement("div", { className: "fw-bold" }, `${error}`))),
-                react_1.default.createElement("h5", { className: "text-muted text-center mb-2 mt-3" },
-                    "If this project helped you, please",
-                    ' ',
-                    react_1.default.createElement("a", { href: "https://github.com/aiexpert-79/openai-stream-response/" }, "Star it on GitHub"),
-                    " so others can find it. :)")))));
+                    react_1.default.createElement("div", { className: "fw-bold" }, `${error}`)))))));
 };
 exports.ClientDemo = ClientDemo;

@@ -10,8 +10,8 @@ export interface ClientDemoProps extends DivProps {}
 export const ClientDemo = (props: ClientDemoProps) => {
   const [model, setModel] = React.useState('gpt-3.5-turbo');
   const [apiKey, setApiKey] = React.useState('');
-  const [systemPrompt, setSystemPrompt] = React.useState('You are a helpful assistant.');
-  const [userPrompt, setUserPrompt] = React.useState('Tell me a funny joke.');
+  const [systemPrompt, setSystemPrompt] = React.useState('You are a helpful medical assistant. Please answer only medical questions.');
+  const [userPrompt, setUserPrompt] = React.useState('Who are you?');
   const [error, setError] = React.useState<undefined | Error>(undefined);
   const [status, setStatus] = React.useState<undefined | number>(undefined);
   const [completion, setCompletion] = React.useState('');
