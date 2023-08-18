@@ -1,12 +1,12 @@
 <h2 align="center">
-  🤖 openai-ext
+  🤖 openai-ext 👩‍🦰
 </h2>
 <h3 align="center">
   Extension to OpenAI's API to support streaming chat completions.
 </h3>
 <p align="center">
   <a href="https://badge.fury.io/js/openai-ext" target="_blank" rel="noopener noreferrer"><img src="https://badge.fury.io/js/openai-ext.svg" alt="npm Version" /></a>&nbsp;
-  <a href="https://github.com/aiexpert-79/openai-ext/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-Source-success" alt="View project on GitHub" /></a>&nbsp;
+  <a href="https://github.com/aiexpert-79/samplebot" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-Source-success" alt="View project on GitHub" /></a>&nbsp;
   <a href="https://github.com/sponsors/aiexpert-79" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86" alt="Sponsor"/></a>
 </p>
 
@@ -208,9 +208,9 @@ For major changes, open an issue first to discuss what you'd like to change.
 
 [/lock:contributing]::---------------------------------------🚫
 
-## ⭐ Found It Helpful? [Star It!](https://github.com/aiexpert-79/openai-ext/stargazers)
+## ⭐ Found It Helpful? [Star It!](https://github.com/aiexpert-79/samplebotstargazers)
 
-If you found this project helpful, let the community know by giving it a [star](https://github.com/aiexpert-79/openai-ext/stargazers): [👉⭐](https://github.com/aiexpert-79/openai-ext/stargazers)
+If you found this project helpful, let the community know by giving it a [star](https://github.com/aiexpert-79/samplebotstargazers): [👉⭐](https://github.com/aiexpert-79/samplebotstargazers)
 
 ## License
 
