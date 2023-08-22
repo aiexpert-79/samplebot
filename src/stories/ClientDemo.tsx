@@ -1,9 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import { getReasonPhrase } from 'http-status-codes';
 import React from 'react';
+import {ReactMic} from 'react-mic';
+import { getReasonPhrase } from 'http-status-codes';
 import { Alert, Badge, Button, Card, Form, Spinner } from 'react-bootstrap';
 import { DivProps } from 'react-html-props';
 import { OpenAIExt } from '../OpenAIExt';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export interface ClientDemoProps extends DivProps {}
 
@@ -11,16 +13,48 @@ export const ClientDemo = (props: ClientDemoProps) => {
   const [model, setModel] = React.useState('gpt-3.5-turbo');
   const [apiKey, setApiKey] = React.useState('');
   const [systemPrompt, setSystemPrompt] = React.useState('You are a helpful medical assistant. Please answer only medical questions.');
-  const [userPrompt, setUserPrompt] = React.useState('Who are you?');
+  const [userPrompt, setUserPrompt] = React.useState('Hi');
   const [error, setError] = React.useState<undefined | Error>(undefined);
   const [status, setStatus] = React.useState<undefined | number>(undefined);
   const [completion, setCompletion] = React.useState('');
   const [xhr, setXhr] = React.useState<XMLHttpRequest | undefined>(undefined);
   const [showKey, setShowKey] = React.useState(false);
-
+  const [record, setRecord] = React.useState(false);
   const [shouldRun, setShouldRun] = React.useState(false);
   const [running, setRunning] = React.useState(false);
 
+  const handleStartRecording = () => {
+    setRecord(true);
+    console.log(record);
+  };
+  
+  const handleStopRecording = () => {
+    setRecord(false);
+  };
+
+  const handleAudioRecording = async (recordedBlob:any) => {
+    console.log("data");
+    const formData = new FormData();
+    formData.append('audio', recordedBlob.blob, 'recording.wav');
+    try {
+      const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: 'Bearer ' + apiKey,
+          },
+        }
+      );
+  
+      if (response.data?.transcripts?.length > 0) {
+        const { question } = response.data.transcripts[0];
+        setUserPrompt(question);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
   React.useEffect(() => {
     if (shouldRun && !running) {
       setShouldRun(false);
@@ -63,19 +97,10 @@ export const ClientDemo = (props: ClientDemoProps) => {
 
   return (
     <Card>
-      {/* <Card.Header>
-        <div className="d-flex flex-wrap align-items-center gap-4">
-          <div>Client Chat Completion Stream Demo</div>
-          <div style={{ fontSize: '80%' }}>
-            <a href="https://github.com/aiexpert-79/openai-stream-response/blob/master/src/stories/ClientDemo.tsx">
-              View Demo Source
-            </a>
-          </div>
-        </div>
-      </Card.Header> */}
       <Card.Body>
         <Form
           className="d-flex flex-column gap-2"
+          encType='multipart/form-data'
           onSubmit={(e) => {
             e.preventDefault();
             if (!running) {
@@ -100,16 +125,6 @@ export const ClientDemo = (props: ClientDemoProps) => {
                   </Button>
                 </div>
               </div>
-              {/* <div>
-                <div className="small fw-bold">Model:</div>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter model"
-                  value={model}
-                  onChange={(e) => setModel(e.target.value)}
-                  required
-                />
-              </div> */}
             </Card.Body>
           </Card>
           <Alert variant="info" className="d-flex flex-column gap-1 mb-0">
@@ -124,14 +139,30 @@ export const ClientDemo = (props: ClientDemoProps) => {
           </Alert>
           <Alert variant="primary" className="d-flex flex-column gap-1 mb-0">
             <div className="small fw-bold">👩‍🦰 User Prompt:</div>
-            <Form.Control
-              type="text"
-              placeholder="Enter user prompt"
-              value={userPrompt}
-              onChange={(e) => setUserPrompt(e.target.value)}
-              required
-            />
+            <div className='d-flex gap-1'>
+              <Form.Control
+                type="text"
+                name='question'
+                placeholder="Enter user prompt"
+                value={userPrompt}
+                onChange={(e) => setUserPrompt(e.target.value)}
+                required
+              />
+              <Button variant="outline-primary" onClick={record ? handleStopRecording : handleStartRecording}>
+                {record ? 'Stop' : 'Record'}
+              </Button>
+            </div>
           </Alert>
+          { record && (
+            <ReactMic
+              record={true}
+              onStop={handleAudioRecording}
+              className="sound-wave"
+              strokeColor="#000000"
+              backgroundColor="#ffffff"
+              visualSetting='sinewave'
+            />
+          )}
           <div className="d-flex gap-1">
             <Button type="submit" variant="primary" disabled={running}>
               <div className="d-flex align-items-center gap-2">
