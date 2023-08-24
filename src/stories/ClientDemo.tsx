@@ -1,5 +1,4 @@
 import React from 'react';
-import {ReactMic} from 'react-mic';
 import { getReasonPhrase } from 'http-status-codes';
 import { Alert, Badge, Button, Card, Form, Spinner } from 'react-bootstrap';
 import { DivProps } from 'react-html-props';
@@ -25,17 +24,29 @@ export const ClientDemo = (props: ClientDemoProps) => {
 
   const handleStartRecording = () => {
     setRecord(true);
-    console.log(record);
+    let chunks = [];
+    let mediaRecorder;
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+          mediaRecorder = new MediaRecorder(stream);
+          mediaRecorder.addEventListener('dataavailable', event => chunks.push(event.data));
+          mediaRecorder.start();
+      })
+      .catch(error => console.error(error));
   };
   
-  const handleStopRecording = () => {
+  const handleStopRecording = async (blob:any) => {
     setRecord(false);
-  };
-
-  const handleAudioRecording = async (recordedBlob:any) => {
-    console.log("data");
+    let chunks;
+    blob = new Blob(chunks, { type: 'audio/mpeg' });
     const formData = new FormData();
-    formData.append('audio', recordedBlob.blob, 'recording.wav');
+    formData.append('audio', blob, 'recording.wav');
+    formData.append('model', 'whisper-1');
+    formData.append('language', 'en');
+    formData.append('auto_highlights', 'true');
+    formData.append('speaker_labels', 'true');
+    console.log(formData);
+
     try {
       const response = await axios.post('https://api.openai.com/v1/audio/transcriptions', formData,
         {
@@ -45,7 +56,7 @@ export const ClientDemo = (props: ClientDemoProps) => {
           },
         }
       );
-  
+      console.log(response);  
       if (response.data?.transcripts?.length > 0) {
         const { question } = response.data.transcripts[0];
         setUserPrompt(question);
@@ -100,7 +111,6 @@ export const ClientDemo = (props: ClientDemoProps) => {
       <Card.Body>
         <Form
           className="d-flex flex-column gap-2"
-          encType='multipart/form-data'
           onSubmit={(e) => {
             e.preventDefault();
             if (!running) {
@@ -153,16 +163,6 @@ export const ClientDemo = (props: ClientDemoProps) => {
               </Button>
             </div>
           </Alert>
-          { record && (
-            <ReactMic
-              record={true}
-              onStop={handleAudioRecording}
-              className="sound-wave"
-              strokeColor="#000000"
-              backgroundColor="#ffffff"
-              visualSetting='sinewave'
-            />
-          )}
           <div className="d-flex gap-1">
             <Button type="submit" variant="primary" disabled={running}>
               <div className="d-flex align-items-center gap-2">
