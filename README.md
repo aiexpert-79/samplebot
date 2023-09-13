@@ -1,5 +1,5 @@
 <h2 align="center">
-  🤖 openai-ext
+  🤖 openai-ext 👩‍🦰
 </h2>
 <h3 align="center">
   Extension to OpenAI's API to support streaming chat completions.
